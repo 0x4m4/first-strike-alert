@@ -49,7 +49,7 @@ A dystopian-themed first blood announcer for CTFd with automatic sound playback 
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/first-strike-alert.git
+   git clone https://github.com/0x4m4/first-strike-alert.git
    cd first-strike-alert
    ```
 
