@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <defs>
+    <pattern id="circuitPattern" width="100" height="100" patternUnits="userSpaceOnUse">
+      <rect width="100" height="100" fill="#0a0a0a"/>
+      <path d="M10,10 L10,40 L40,40 M40,40 L40,70 L70,70 M70,40 L90,40" stroke="#ff1a1a" stroke-width="0.8" fill="none" opacity="0.3"/>
+      <path d="M30,10 L30,30 L50,30 L50,50 L30,50 L30,90" stroke="#ff1a1a" stroke-width="0.8" fill="none" opacity="0.3"/>
+      <path d="M50,70 L70,70 L70,90" stroke="#ff1a1a" stroke-width="0.8" fill="none" opacity="0.3"/>
+      <path d="M70,10 L70,30 L90,30" stroke="#ff1a1a" stroke-width="0.8" fill="none" opacity="0.3"/>
+      <circle cx="10" cy="10" r="2" fill="#ff1a1a" opacity="0.5"/>
+      <circle cx="30" cy="10" r="2" fill="#ff1a1a" opacity="0.5"/>
+      <circle cx="50" cy="30" r="2" fill="#ff1a1a" opacity="0.5"/>
+      <circle cx="70" cy="10" r="2" fill="#ff1a1a" opacity="0.5"/>
+      <circle cx="90" cy="30" r="2" fill="#ff1a1a" opacity="0.5"/>
+      <circle cx="90" cy="40" r="2" fill="#ff1a1a" opacity="0.5"/>
+      <circle cx="10" cy="40" r="2" fill="#ff1a1a" opacity="0.5"/>
+      <circle cx="40" cy="40" r="2" fill="#ff1a1a" opacity="0.5"/>
+      <circle cx="40" cy="70" r="2" fill="#ff1a1a" opacity="0.5"/>
+      <circle cx="30" cy="90" r="2" fill="#ff1a1a" opacity="0.5"/>
+      <circle cx="50" cy="70" r="2" fill="#ff1a1a" opacity="0.5"/>
+      <circle cx="70" cy="70" r="2" fill="#ff1a1a" opacity="0.5"/>
+      <circle cx="70" cy="90" r="2" fill="#ff1a1a" opacity="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="400" fill="url(#circuitPattern)"/>
+</svg> 

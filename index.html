@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EotW - First Blood Announcer</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🩸</text></svg>">
+    <meta http-equiv="refresh" content="15">
+    <!-- <script>
+        setTimeout(() => {
+        window.location.reload();
+        }, 8000);
+    </script> -->
+</head>
+<body>
+    <div class="background-container">
+        <div class="overlay"></div>
+    </div>
+    
+    <header class="dystopian-header">
+        <div class="header-banner">
+            <div class="ai-emblem left"></div>
+            <div class="logo-container">
+                <h1 class="site-title">
+                    <span class="glitch-text">SYNTHETIC SENTIENCE</span>
+                </h1>
+                <div class="subtitle">FIRST BLOOD MONITORING SYSTEM</div>
+            </div>
+            <div class="ai-emblem right"></div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="scoreboard-container">
+            <h2 class="scoreboard-title"><span class="system-tag">[SYS-143]</span> RESISTANCE TRACKER</h2>
+            
+            <div id="announcement-screen" class="announcement-screen hidden">
+                <div class="announcement-content">
+                    <div class="announcement-header">
+                        <div class="transmission-signal">INTERCEPTED TRANSMISSION</div>
+                        <span class="blood-emoji">🩸</span> FIRST BLOOD DETECTED
+                    </div>
+                    <div class="announcement-body">
+                        <div id="announce-team" class="team-name">TEAM NAME</div>
+                        <div id="announce-challenge" class="challenge-name">CHALLENGE NAME</div>
+                        <div id="announce-category" class="challenge-category">CATEGORY</div>
+                        <div id="announce-time" class="solve-time">TIME</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scoreboard-wrapper">
+                <table id="scoreboard-table">
+                    <thead>
+                        <tr>
+                            <th>CHALLENGE</th>
+                            <th>CATEGORY</th>
+                            <th>FIRST BLOOD</th>
+                            <th>TIME</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scoreboard-body">
+                        <!-- Blood data will be loaded here -->
+                        <tr class="loading-row">
+                            <td colspan="4">SCANNING RESISTANCE DATABASE...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Team blood stats section -->
+            <div id="blood-stats" class="blood-stats">
+                <!-- Team blood statistics will be loaded here -->
+                <div class="loading">ANALYZING RESISTANCE ACTIVITIES...</div>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="dystopian-footer">
+        <div class="footer-pattern"></div>
+        <p>RESISTANCE MOVEMENT // <span class="hacker-name">0x4m4</span></p>
+    </footer>
+        <audio id="blood-sound-element" preload="auto" style="display:none;" controls>
+        <source src="static/sounds/transmission.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <script src="static/js/script.js"></script>
+</body>
+
+</html> 

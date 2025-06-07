@@ -1,0 +1,787 @@
+@font-face {
+    font-family: 'cyberpunk';
+    src: url(../fonts/luckyrookie/LuckyRookie-Regular.ttf);
+}
+
+:root {
+    --primary-color: #ff1a1a; /* Red */
+    --secondary-color: #1a1a1a; /* Dark gray */
+    --accent-color: #ff0033; /* Bright red */
+    --bg-color: #0a0a0a;
+    --text-color: #e0e0e0;
+    --table-bg: rgba(10, 10, 10, 0.8);
+    --row-hover: rgba(255, 26, 26, 0.15);
+    --border-color: rgba(255, 26, 26, 0.3);
+    --blood-color: rgba(255, 0, 51, 0.9);
+    --table-border: #333333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Share Tech Mono', monospace;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+    background-image: 
+        linear-gradient(0deg, rgba(10, 10, 10, 0.95), rgba(10, 10, 10, 0.7)),
+        url('../img/circuit-pattern.svg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+h1, h2, h3 {
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at top left, rgba(255, 0, 0, 0.05), transparent 50%),
+        radial-gradient(circle at bottom right, rgba(255, 0, 0, 0.05), transparent 50%);
+    z-index: 1;
+}
+
+.dystopian-header {
+    padding: 20px 0;
+    border-bottom: 2px solid var(--primary-color);
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to bottom, rgba(10, 10, 10, 0.9), rgba(26, 26, 26, 0.7));
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.1);
+}
+
+.header-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.logo-container {
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.site-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin: 0;
+    line-height: 1;
+    text-shadow: 0 0 10px var(--primary-color);
+    position: relative;
+}
+
+.glitch-text {
+    position: relative;
+    display: inline-block;
+    color: var(--text-color);
+    animation: textGlitch 5s infinite;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: 'SYNTHETIC SENTIENCE';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+}
+
+.glitch-text::before {
+    color: var(--primary-color);
+    animation: glitchOffset 3s infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+}
+
+.glitch-text::after {
+    color: var(--accent-color);
+    animation: glitchOffset 2s infinite reverse;
+    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+}
+
+@keyframes textGlitch {
+    0%, 89%, 100% {
+        transform: skew(0deg);
+    }
+    90%, 95% {
+        transform: skew(-2deg);
+    }
+    96%, 99% {
+        transform: skew(2deg);
+    }
+}
+
+@keyframes glitchOffset {
+    0%, 89%, 100% {
+        transform: translate(0);
+    }
+    90%, 91% {
+        transform: translate(-2px, 2px);
+    }
+    92%, 93% {
+        transform: translate(2px, -2px);
+    }
+    94%, 95% {
+        transform: translate(-2px, -2px);
+    }
+    96%, 97% {
+        transform: translate(2px, 2px);
+    }
+    98%, 99% {
+        transform: translate(-2px, 2px);
+    }
+}
+
+.subtitle {
+    font-size: 1rem;
+    margin-top: 5px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: var(--primary-color);
+    text-shadow: 0 0 5px rgba(255, 26, 26, 0.5);
+    animation: pulseText 3s infinite;
+}
+
+@keyframes pulseText {
+    0%, 100% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.ai-emblem {
+    width: 80px;
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 20px;
+    position: relative;
+    opacity: 0.8;
+}
+
+.ai-emblem.left {
+    background-image: url('../img/ai-logo.svg');
+    animation: rotateEmblem 15s infinite linear;
+    filter: drop-shadow(0 0 5px var(--primary-color));
+}
+
+.ai-emblem.right {
+    background-image: url('../img/ai-logo.svg');
+    animation: rotateEmblem 15s infinite linear reverse;
+    filter: drop-shadow(0 0 5px var(--primary-color));
+}
+
+@keyframes rotateEmblem {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+main {
+    padding: 30px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.scoreboard-container {
+    background: var(--table-bg);
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.scoreboard-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+    animation: scanline 10s infinite linear;
+}
+
+@keyframes scanline {
+    0% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(calc(100% + 5px));
+    }
+}
+
+.scoreboard-title {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.system-tag {
+    color: var(--primary-color);
+    margin-right: 10px;
+    animation: blinkTag 4s infinite;
+}
+
+@keyframes blinkTag {
+    0%, 95%, 100% {
+        opacity: 1;
+    }
+    96%, 99% {
+        opacity: 0.5;
+    }
+}
+
+.scoreboard-wrapper {
+    overflow-x: auto;
+    margin-bottom: 30px;
+}
+
+#scoreboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    border: 1px solid var(--table-border);
+}
+
+#scoreboard-table th, 
+#scoreboard-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--table-border);
+}
+
+#scoreboard-table th {
+    background-color: rgba(255, 26, 26, 0.1);
+    color: var(--primary-color);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    position: relative;
+}
+
+#scoreboard-table tr {
+    transition: background-color 0.3s;
+}
+
+#scoreboard-table tr:hover {
+    background-color: var(--row-hover);
+}
+
+.new-blood {
+    animation: highlightRow 3s;
+}
+
+@keyframes highlightRow {
+    0%, 20% {
+        background-color: rgba(255, 0, 0, 0.2);
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+
+.new-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    margin-left: 8px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 0.7;
+    }
+}
+
+.loading-row td, .error-row td {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    padding: 30px 15px !important;
+    animation: flickerText 2s infinite;
+}
+
+@keyframes flickerText {
+    0%, 100% {
+        opacity: 1;
+    }
+    92%, 94% {
+        opacity: 0.8;
+    }
+}
+
+.retry-btn {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.8rem;
+    transition: background-color 0.3s;
+}
+
+.retry-btn:hover {
+    background-color: var(--accent-color);
+}
+
+.blood-stats {
+    margin-top: 30px;
+}
+
+.stats-header {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.stats-header h3 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    display: inline-block;
+    padding: 0 15px;
+    position: relative;
+}
+
+.stats-header h3::before,
+.stats-header h3::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+}
+
+.stats-header h3::before {
+    right: 100%;
+}
+
+.stats-header h3::after {
+    left: 100%;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.team-stats {
+    background-color: rgba(26, 26, 26, 0.7);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.team-stats:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.2);
+}
+
+.team-stats-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 26, 26, 0.1);
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.team-name-header {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-color);
+    max-width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.blood-count {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.9rem;
+}
+
+.challenge-list {
+    list-style-type: none;
+    padding: 10px 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.challenge-list li {
+    padding: 8px 15px;
+    border-bottom: 1px solid rgba(51, 51, 51, 0.5);
+    transition: background-color 0.3s;
+}
+
+.challenge-list li:last-child {
+    border-bottom: none;
+}
+
+.challenge-list li:hover {
+    background-color: rgba(255, 26, 26, 0.05);
+}
+
+.challenge-name {
+    font-size: 0.9rem;
+    margin-bottom: 2px;
+}
+
+.challenge-category {
+    font-size: 0.7rem;
+    color: #888;
+    text-transform: uppercase;
+}
+
+.loading {
+    text-align: center;
+    padding: 30px;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+    animation: flickerText 2s infinite;
+}
+
+.dystopian-footer {
+    background-color: rgba(10, 10, 10, 0.9);
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 40px;
+    border-top: 1px solid var(--border-color);
+    position: relative;
+}
+
+.footer-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(0deg, rgba(255, 0, 0, 0.05) 25%, transparent 25%, transparent 50%, rgba(255, 0, 0, 0.05) 50%, rgba(255, 0, 0, 0.05) 75%, transparent 75%, transparent);
+    background-size: 10px 10px;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.hacker-name {
+    color: var(--primary-color);
+    font-weight: 700;
+    position: relative;
+}
+
+.hacker-name::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--primary-color);
+}
+
+/* Announcement Screen */
+.announcement-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.5s;
+    overflow: hidden;
+}
+
+.announcement-screen::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 0, 0, 0.03) 3px,
+            rgba(255, 0, 0, 0.03) 3px
+        );
+    animation: scanLines 0.5s linear infinite;
+    pointer-events: none;
+}
+
+.announcement-screen::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        rgba(255, 0, 0, 0.1),
+        rgba(255, 0, 0, 0.05) 50%,
+        rgba(255, 0, 0, 0.1)
+    );
+    animation: transmission 15s ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes scanLines {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(3px);
+    }
+}
+
+@keyframes transmission {
+    0%, 100% {
+        opacity: 0;
+    }
+    10%, 90% {
+        opacity: 1;
+    }
+    15%, 25%, 35%, 45%, 55%, 65%, 75%, 85% {
+        opacity: 0.8;
+    }
+    20%, 30%, 40%, 50%, 60%, 70%, 80% {
+        opacity: 1;
+    }
+}
+
+.announcement-screen.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.announcement-content {
+    max-width: 600px;
+    width: 90%;
+    background-color: rgba(20, 20, 20, 0.95);
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 
+        0 0 30px rgba(255, 0, 0, 0.3),
+        inset 0 0 15px rgba(255, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.announcement-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(45deg, transparent 48%, rgba(255, 0, 0, 0.1) 49%, rgba(255, 0, 0, 0.1) 51%, transparent 52%),
+        linear-gradient(-45deg, transparent 48%, rgba(255, 0, 0, 0.1) 49%, rgba(255, 0, 0, 0.1) 51%, transparent 52%);
+    background-size: 30px 30px;
+    opacity: 0.3;
+    z-index: -1;
+    animation: backgroundPulse 15s linear;
+}
+
+@keyframes backgroundPulse {
+    0%, 100% { opacity: 0.2; }
+    15%, 85% { opacity: 0.3; }
+    30%, 70% { opacity: 0.4; }
+    50% { opacity: 0.5; }
+}
+
+.announcement-header {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.transmission-signal {
+    font-size: 1rem;
+    color: #fff;
+    background-color: var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+    animation: transmissionPulse 1.5s infinite;
+}
+
+@keyframes transmissionPulse {
+    0%, 100% {
+        background-color: var(--primary-color);
+    }
+    50% {
+        background-color: #ff5555;
+    }
+}
+
+.blood-emoji {
+    animation: shake 0.5s infinite;
+    display: inline-block;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-3px);
+    }
+    75% {
+        transform: translateX(3px);
+    }
+}
+
+.announcement-body {
+    padding: 20px;
+    background-color: rgba(10, 10, 10, 0.8);
+    border-radius: 3px;
+    border: 1px solid var(--border-color);
+}
+
+.announcement-body .team-name {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--text-color);
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.announcement-body .challenge-name {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.announcement-body .challenge-category {
+    font-size: 1rem;
+    color: #aaa;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.announcement-body .solve-time {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .header-banner {
+        flex-direction: column;
+    }
+    
+    .ai-emblem {
+        margin: 10px 0;
+    }
+    
+    .site-title {
+        font-size: 1.8rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .announcement-content {
+        width: 95%;
+        padding: 20px;
+    }
+    
+    .announcement-header {
+        font-size: 1.5rem;
+    }
+    
+    .announcement-body .team-name {
+        font-size: 1.5rem;
+    }
+    
+    .announcement-body .challenge-name {
+        font-size: 1.2rem;
+    }
+}
